@@ -4,11 +4,18 @@ import commonjs from 'rollup-plugin-commonjs';
 import livereload from 'rollup-plugin-livereload';
 import { terser } from 'rollup-plugin-terser';
 import rollup_start_dev from './rollup_start_dev';
+import autoPreprocess from 'svelte-preprocess';
+import css from 'rollup-plugin-css-only';
 
 const production = !process.env.ROLLUP_WATCH;
 
 export default {
-	input: 'src/main.js',
+  input: 'src/main.js',
+  // format: 'amd',
+	// external: ['the-answer'],
+	// paths: {
+	// 	'the-answer': 'https://unpkg.com/the-answer'
+	// },
 	output: {
 		sourcemap: true,
 		format: 'iife',
@@ -24,6 +31,7 @@ export default {
 			css: css => {
 				css.write('public/bundle.css');
       },
+      preprocess: autoPreprocess()
 		}),
 
 		// If you have external dependencies installed from
@@ -47,7 +55,12 @@ export default {
 
 		// If we're building for production (npm run build
 		// instead of npm run dev), minify
-		production && terser()
+    production && terser(),
+
+    css({
+      include: './node_modules/semantic-ui-css/semantic.css',
+      output: 'public/semantic.css'
+    })
 	],
 	watch: {
 		clearScreen: false

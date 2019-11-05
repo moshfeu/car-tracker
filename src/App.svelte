@@ -1,13 +1,16 @@
 <script>
+  import 'semantic-ui-css/semantic.css';
   import Timeline from './components/Timeline.svelte';
 </script>
 
-<style>
+<style type="text/scss">
 .app {
-  background: red;
+
 }
 </style>
 
 <div class="app">
-  <Timeline></Timeline>
+  <div class="app-inner">
+    <Timeline></Timeline>
+  </div>
 </div>
