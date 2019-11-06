@@ -12,6 +12,8 @@
     "svelte": "^3.0.0"
   },
   "dependencies": {
+    "@fortawesome/free-solid-svg-icons": "^5.11.2",
+    "fa-svelte": "^3.0.0",
     "rollup-plugin-css-only": "^1.0.0",
     "semantic-ui-css": "^2.4.1",
     "sirv-cli": "^0.4.4",
